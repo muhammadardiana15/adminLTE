@@ -153,7 +153,7 @@ class BookController extends Controller
         $book->delete();
      
         $notification = array(
-            'message' => 'Data buku berhasil dihapus',
+            'message' => 'Delete Completed',
             'alert-type' => 'success'
         );
 
