@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Pengelolaan Buku')
+@section('title', 'Book PAGE')
 
 @section('content_header')
-    <h1>Pengelolaan Buku</h1>
+    <h1>BOOK PAGE</h1>
 @stop
 
 @section('content')
@@ -12,20 +12,22 @@
            <div class="col-md-12">
                <div class="card">
                    <div class="card-header">
-                       {{ __('Pengelolaan Buku') }}
-                       <button class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i> Tambah Data</button>
+                       {{ __('Book Setting') }}
+                       
                     </div>
                    <div class="card-body">
+                   <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i> Add Data</button>
+                   <a href="{{route('admin.print.books')}}" target="_blank" class="btn btn-secondary mb-5"><i class="fa fa-print"></i>Print to PDF</a>
                        <table id="table-data" class="table table-borderer display nowrap" style="width:100%">
                            <thead>
                                <tr>
                                    <th>NO</th>
-                                   <th>JUDUL</th>
-                                   <th>PENULIS</th>
-                                   <th>TAHUN</th>
-                                   <th>PENERBIT</th>
+                                   <th>TITLE</th>
+                                   <th>AUTHOR</th>
+                                   <th>YEAR</th>
+                                   <th>PUBLISHER</th>
                                    <th>COVER</th>
-                                   <th>AKSI</th>
+                                   <th>METHOD</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -41,13 +43,13 @@
                                             @if($book->cover !== null)
                                                 <img src="{{ asset('storage/cover_buku/'.$book->cover) }}" width="100px"/>
                                             @else
-                                                [Gambar tidak tersedia]
+                                                [Picture Not Found]
                                             @endif
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" id="btn-edit-buku" class="btn btn-success" data-toggle="modal" data-target="#editBukuModal" data-id="{{ $book->id }}">Ubah</button>
-                                                <button type="button" id="btn-delete-buku" class="btn btn-danger" data-toggle="modal" data-target="#deleteBukuModal" data-id="{{ $book->id }}" data-cover="{{ $book->cover }}">Hapus</button>			
+                                                <button type="button" id="btn-edit-buku" class="btn btn-success" data-toggle="modal" data-target="#editBukuModal" data-id="{{ $book->id }}">Edit</button>
+                                                <button type="button" id="btn-delete-buku" class="btn btn-danger" data-toggle="modal" data-target="#deleteBukuModal" data-id="{{ $book->id }}" data-cover="{{ $book->cover }}">Delete</button>			
                                             </div>                                
                                         </td>
                                     </tr>
@@ -63,7 +65,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Buku</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add Data Book</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -72,19 +74,19 @@
           <form method="post" action="{{ route('admin.book.submit') }}" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
-                  <label for="judul">Judul Buku</label>
+                  <label for="judul">Title</label>
                   <input type="text" class="form-control" name="judul" id="judul" required/>
               </div>
               <div class="form-group">
-                  <label for="penulis">Penulis</label>
+                  <label for="penulis">Author</label>
                   <input type="text" class="form-control" name="penulis" id="penulis" required/>
               </div>
               <div class="form-group">
-                  <label for="tahun">Tahun</label>
+                  <label for="tahun">Year</label>
                   <input min="1" type="number" id="datepicker"class="form-control" name="tahun" id="tahun" required/>
               </div>
               <div class="form-group">
-                  <label for="penerbit">Penerbit</label>
+                  <label for="penerbit">Publisher</label>
                   <input type="text" class="form-control" name="penerbit" id="penerbit" required/>
               </div>
               <div class="form-group">
@@ -94,8 +96,8 @@
   
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Kirim</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add</button>
           </form>
         </div>
       </div>
@@ -106,7 +108,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Data Buku</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edit Book</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -118,19 +120,19 @@
           <div class="row">
               <div class="col-md-6">
                   <div class="form-group">
-                      <label for="edit-judul">Judul Buku</label>
+                      <label for="edit-judul">Title</label>
                       <input type="text" class="form-control" name="judul" id="edit-judul" required/>
                   </div>
                   <div class="form-group">
-                      <label for="edit-penulis">Penulis</label>
+                      <label for="edit-penulis">Author</label>
                       <input type="text" class="form-control" name="penulis" id="edit-penulis" required/>
                   </div>
                   <div class="form-group">
-                      <label for="edit-tahun">Tahun</label>
+                      <label for="edit-tahun">Year</label>
                       <input min="1" type="number" id="datepicker" class="form-control" name="tahun" id="edit-tahun" required/>
                   </div>
                   <div class="form-group">
-                      <label for="edit-penerbit">Penerbit</label>
+                      <label for="edit-penerbit">Publisher</label>
                       <input type="text" class="form-control" name="penerbit" id="edit-penerbit" required/>
                   </div>
               </div>
@@ -146,7 +148,7 @@
         <div class="modal-footer">
           <input type="hidden" name="id" id="edit-id"/>
           <input type="hidden" name="old_cover" id="edit-old-cover"/>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-success">Update</button>
           </form>
         </div>
@@ -171,7 +173,7 @@
         <div class="modal-footer">
           <input type="hidden" name="id" id="delete-id" value=""/>
           <input type="hidden" name="old_cover" id="delete-old-cover"/>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-danger">Hapus</button>
           </form>
         </div>
