@@ -8,7 +8,7 @@
 
 @section('content')
     @if($user->roles_id == 1)
-        Anda Login Sebagai Admin
+             Anda Login Sebagai Admin 1
     @else
         Anda Login Sebagai User
     @endif
