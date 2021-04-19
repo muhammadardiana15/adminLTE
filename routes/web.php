@@ -29,8 +29,6 @@ Route::get('admin/home', [AdminController::class, 'index'])
     ->middleware('is_admin');
 
 
-
-
 //Route Book
 Route::get('admin/books', [BookController::class, 'index'])
     ->name('admin.books')
@@ -65,4 +63,24 @@ Route::get('admin/books/export', [BookController::class, 'export'])
 //Route IMPORT EXCEL
 Route::post('admin/books/import', [BookController::class, 'import'])
     ->name('admin.book.import')
+    ->middleware('is_admin');
+
+
+
+
+//Route Categories
+Route::get('admin/kategori', [App\Http\Controllers\CategoriesController::class, 'index'])
+    ->name('admin.kategori')
+    ->middleware('is_admin');
+
+
+//Route Brands
+Route::get('admin/merek', [App\Http\Controllers\BrandsController::class, 'index'])
+    ->name('admin.merek')
+    ->middleware('is_admin');
+
+
+//Route Product
+Route::get('admin/kelola_barang', [App\Http\Controllers\ProductController::class, 'index'])
+    ->name('admin.barang')
     ->middleware('is_admin');

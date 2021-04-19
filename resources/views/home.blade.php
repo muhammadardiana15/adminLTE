@@ -2,31 +2,45 @@
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-    <h1>Dashboard</h1>
-@stop
-
 @section('content')
-    @if($user->roles_id == 1)
-             Anda Login Sebagai Admin 1
-    @else
-        Anda Login Sebagai User
-    @endif
-@stop
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-@section('footer')
-    <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0.0
+                <div class="card-body">
+                    @if ($user->roles_id==1)
+                    Your loged as admin
+
+                    @else ($user->roles_id ==2)
+                    Your loged as user
+                    <!-- <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div> -->
+                    @endif
+
+
+                </div>
+            </div>
+        </div>
     </div>
-    <strong>CopyRight &copy; {{date('Y')}}
-    <a href="http://ft.unsur.ac.id/" target="_blank">Fakultas Teknik,
-    Universitas Suryakancana</a>.</strong> All Right reserved
+</div>
+@endsection
+@section('footer')
+<div class="float-right d-none d-sm-block">
+    <b>Version</b> 1.0.0
+</div>
+<strong>CopyRight &copy; {{date('Y')}}
+    <a href="#" target="_blank">Mochammad Ilham Maulana</a>.</strong> All Right reserved
 @stop
 
 @section('css')
-        <link rel="stylesheet" href="/css/admin_custom.css">
+<link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
-        <script>console.log ('Hi!')</script>
+<script>
+    console.log('Hi!')
+</script>
 @stop

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Admin TBPWL',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Fedor</b> STORAGE',
+    'logo_img' => 'vendor/adminlte/dist/img/logo.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card-outline card-secondary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
@@ -126,9 +126,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-white elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-grey',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -229,18 +229,54 @@ return [
             'search' => true,
             'topnav' => true,
         ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'isAdmin',
-        // ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+            'text'        => 'Dashboard',
+            'url'         => 'admin/home',
+            'icon'        => 'fas fa-fw fa-home',
+            'can' => 'isAdmin',
         ],
+        [
+            'text'        => 'User',
+            'url'         => 'admin/user',
+            'icon'        => 'far fa-fw fa-user',
+            'can' => 'isAdmin',
+        ],
+        [
+            'text'        => 'Pengelolaan Barang',
+            'url'         => 'admin/kelola_barang',
+            'icon'        => 'fas fa-fw fa-box',
+            'can' => 'isAdmin',
+        ],
+        [
+            'text'        => 'Kategori Barang',
+            'url'         => 'admin/kategori',
+            'icon'        => 'fas fa-fw fa-folder-open',
+            'can' => 'isAdmin',
+        ],
+        [
+            'text'        => 'Merek Barang',
+            'url'         => 'admin/merek',
+            'icon'        => 'fab fa-fw fa-apple',
+            'can' => 'isAdmin',
+        ],
+        [
+            'text'    => 'Laporan',
+            'icon'    => 'fas fa-file-archive',
+            'can' => 'isAdmin',
+            'submenu' => [
+                [
+                    'text' => 'Laporan Barang Masuk',
+                    'url'  => 'admin/laporan/masuk',
+                    'icon' => 'fas fa-sign-in-alt',
+                ],
+                [
+                    'text'    => 'Laporan Barang Keluar',
+                    'url'     => 'admin/laporan/keluar',
+                    'icon' => 'fas fa-sign-out-alt',
+                ],
+            ],
+        ],
+
         [
             'text'        => 'Book',
             'url'         => 'admin/books',
@@ -258,44 +294,44 @@ return [
             'url'  => 'profile',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
         // ['header' => 'labels'],
         // [
         //     'text'       => 'important',
