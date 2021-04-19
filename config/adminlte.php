@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Fedor</b> STORAGE',
+    'logo' => '<b>Cianjur</b> STORAGE',
     'logo_img' => 'vendor/adminlte/dist/img/logo.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,

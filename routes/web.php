@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +82,9 @@ Route::get('admin/merek', [App\Http\Controllers\BrandsController::class, 'index'
 
 
 //Route Product
-Route::get('admin/kelola_barang', [App\Http\Controllers\ProductController::class, 'index'])
-    ->name('admin.barang')
-    ->middleware('is_admin');
+// Route::get('admin/kelola_barang', [App\Http\Controllers\ProductController::class, 'index'])
+//     ->name('admin.barang')
+//     ->middleware('is_admin');
+
+
+// });
